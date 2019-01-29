@@ -1,0 +1,58 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+identity:
+    path: /afficher/{nom}/{prenom}/{age}
+    controller: App\Controller\IdentityController::index
+
+url:
+    path: URL/{forum}/{year}/{month}/{ID}/{slug}.{EXT}
+    controller: App\Controller\IdentityController::forumUrl
+    defaults:
+        EXT: html
+    requirements:
+        year:   \d{4}
+        EXT: html|json|rss
+        ID : \d+
+        slug : '[0-9a-zA-Z-]+'
+
+affiche-Form-Calcule:
+    path: /form/
+    controller: App\Controller\DefaultController::afficheFormCalcule
+
+affiche-Calcule:
+    path: /form/affiche-Calcule/
+    controller: App\Controller\DefaultController::afficheTabCalcule
+
+tab-membre:
+    path: /membre
+    controller: App\Controller\DefaultController::membreTab
+    
+base-list:
+    path: /page2
+    controller: App\Controller\DefaultController::listdonnee
+
+base:
+    path: /base
+    controller: App\Controller\DefaultController::base
+
+show-all-event:
+    path: /event
+    controller: App\Controller\EventController::showAllEvent
+
+update-event:
+    path: /event/update/{id}
+    controller: App\Controller\EventController::updateEvent
+
+delete-event:
+    path: /event/delete/{id}
+    controller: App\Controller\EventController::deletEvent
+
+show-five-event:
+    path: /event/5
+    controller: App\Controller\EventController::showFiveEvent
+
+show-fist-and-last-event:
+    path: /event/show-fist-and-last-event
+    controller: App\Controller\EventController::showfistAndLastEvent

@@ -1,0 +1,83 @@
+ <h3>Déclaration des variables globales : {{ institut }} </h3>
+ <h3>variable global  : {{ cGlobal }} </h3>
+ {% set a = constant('App\\Controller\\DefaultController::CONSTANT_A') %} 
+ <h3>Constant depuis twig  : {{ a }} </h3>
+ {% set b = random(['12', '13', '18'])  %}
+ <h3> tableau  : {{ b }} </h3>
+ <h3>Constant depuis Controller : {{ constant('CONSTANT_A', CONSTANT_A) }}</h3>
+ <h3>twig extension : {{ a|name(b,cGlobal) }} </h3>
+
+
+<h1>Members</h1>
+<ul>
+
+    {% for key, age in membres %}
+
+    <li>{{ key ~" "~age}} ans</li> 
+        {% if age < 12 %}
+            Il faut avoir au moins 12 ans pour ce film.
+        {% elseif age < 18 %}
+            OK bon film.
+        {% else %}
+            Un peu vieux pour voir ce film non ?
+        {% endif %}
+    {% endfor %}
+
+</ul>
+<h1>Events dans un tableau </h1>
+<table>
+<tr>
+    <td>Nom</td>
+    <td>Date</td>
+    <td>lieu</td>
+</tr>
+    {% for event in events %}
+        <tr>
+            <td>{{ event.nom }} </td>
+            <td>{{ event.date|date('d/m/Y', "Europe/Paris") }} </td>
+            <td>{{ event.lieu }} </td>
+        </tr>
+    {% endfor %}
+
+<table>
+
+<h1>Events Option</h1>
+<select>
+    {% for event in events %}
+      
+        <option>{{ loop.index ~"-"~event.nom }}</option> 
+
+    {% endfor %}
+</select>
+
+<h1>Membres Tableau en TWIG / Membres paire / Impaire </h1>
+{% set membres = {'pierre': '10','Micheal': '15', 'paul':'25'} %}
+<ul>
+    {% for key, age in membres %}
+    <li>
+    {{ loop.index ~" "~ key ~" "~age}} ans ===>  
+    {% if loop.index is even %}
+            pair
+        {% else %}
+            impair
+        {% endif %}
+    </li>
+    {% endfor %}
+   
+</ul>
+
+<h1>Membres Tableau en TWIG / DIV 3 </h1>
+{% set membres = {'pierre': '10','Micheal': '15', 'paul':'25'} %}
+<ul>
+    {% for key, age in membres %}
+    <li>
+    {{ loop.index ~" "~ key ~" "~age}} ans ===>  
+    {% if loop.index is divisible by(3) %}
+            divisible par 3 
+        {% else %}
+            n'est pas div par 3
+        {% endif %}
+    </li>
+    {% endfor %}
+   
+</ul>

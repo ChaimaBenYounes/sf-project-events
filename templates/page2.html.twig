@@ -1,0 +1,19 @@
+<h1> je suis page2.html.twig </h1>
+<table>
+<tr>
+    <td>contact</td>
+    <td>offre</td>
+    <td>demandes</td>
+    <td>mes favoris</td>
+    <td>boutiques</td>
+</tr>
+<tr>
+    {% for list in lists %}
+            <td>{{ list }} </td>
+    {% endfor %}
+ </tr>
+<table>
+
+
+
+{{ include("identity/message.html.twig") }}

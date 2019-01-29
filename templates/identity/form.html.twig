@@ -1,0 +1,35 @@
+{%  extends 'base.html.twig' %}
+{% block title %}je suis formulaire de calcule{% endblock %}
+{% block stylesheets %} 
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+{% endblock %}
+{%  block body %}
+<form action="{{ path('affiche-Calcule') }}" method="post">
+    <div>
+        <label for="name">Nombre 1</label>
+        <input type="text" id="nb1" name="nb1">
+    </div>
+
+    <div>
+        <select id="operation" name="operation">
+            <option value="+" selected>+</option>
+            <option value="-" >-</option>
+            <option value="*" >*</option>
+            <option value="/">/</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="name">Nombre 2</label>
+        <input type="text" id="nb2" name="nb2">
+    </div>
+
+    <div>
+        <button type="submit">Calculer</button>
+    </div>
+
+</form>
+
+
+{% endblock %}
+

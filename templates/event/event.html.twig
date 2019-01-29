@@ -1,0 +1,81 @@
+{% if eventRepository is defined %}
+<h1>Events </h1>
+<table>
+<tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>date</td>
+    <td>description</td>
+    <td>Modification</td>
+    <td>Suppression</td>
+</tr>
+    {% for event in eventRepository %}
+        <tr>
+            <td>{{ event.id }} </td>
+            <td>{{ event.name }} </td>
+            <td>{{ event.pric }} </td>
+            <td>{{ event.date|date('d/m/Y', "Europe/Paris") }} </td>
+            <td>{{ event.description }} </td>
+            <td><a href="{{ path('update-event', {'id': event.id }) }}" >Modifier</a></td>
+            <td><a href="{{ path('delete-event', {'id': event.id }) }}" >X</a></td>
+        </tr>
+    {% endfor %}
+
+<table>
+{% endif %}
+
+{% if showFiveEvent is defined %}
+<h1> les 5 derniers evenements se trouvant entre deux dates </h1>
+<table>
+<tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>date</td>
+    <td>description</td>
+    <td>Modification</td>
+    <td>Suppression</td>
+</tr>
+    {% for event in showFiveEvent %}
+        <tr>
+            <td>{{ event.id }} </td>
+            <td>{{ event.name }} </td>
+            <td>{{ event.pric }} </td>
+            <td>{{ event.date|date('d/m/Y', "Europe/Paris") }} </td>
+            <td>{{ event.description }} </td>
+            <td><a href="{{ path('update-event', {'id': event.id }) }}" >Modifier</a></td>
+            <td><a href="{{ path('delete-event', {'id': event.id }) }}" >X</a></td>
+        </tr>
+    {% endfor %}
+
+<table>
+{% endif %}
+
+
+{% if showfistAndLastEvent is defined %}
+<h1> le premier et le dernier évênement dans une requête </h1>
+<table>
+<tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>date</td>
+    <td>description</td>
+    <td>Modification</td>
+    <td>Suppression</td>
+</tr>
+    {% for event in showfistAndLastEvent %}
+        <tr>
+            <td>{{ event.id }} </td>
+            <td>{{ event.name }} </td>
+            <td>{{ event.pric }} </td>
+            <td>{{ event.date|date('d/m/Y', "Europe/Paris") }} </td>
+            <td>{{ event.description }} </td>
+            <td><a href="{{ path('update-event', {'id': event.id }) }}" >Modifier</a></td>
+            <td><a href="{{ path('delete-event', {'id': event.id }) }}" >X</a></td>
+        </tr>
+    {% endfor %}
+
+<table>
+{% endif %}
