@@ -6,20 +6,21 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\MonService;
 
 class DefaultController extends AbstractController
 {
     const CONSTANT_A = 17;
    
 
-    public function index()
+    public function index(MonService $service)
     {
        /*return new Response(
             '<html><body>Hello Symfony</body></html>'
         ); */
 
         return $this->render('identity/message.html.twig', [
-                'message' => 'Hello Symfony'
+                'message' => $service->HelloSymfony()
             ]
         );
     }
